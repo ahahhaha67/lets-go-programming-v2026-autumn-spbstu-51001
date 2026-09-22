@@ -3,7 +3,6 @@ package main
 import "fmt"
 
 func main() {
-
 	var firstArg int64
 	_, err := fmt.Scanln(&firstArg)
 	if err != nil {
@@ -32,7 +31,7 @@ func main() {
 		fmt.Println(firstArg * secondArg)
 	case "/":
 		if secondArg == 0 {
-			fmt.Println("Division by zero error")
+			fmt.Println("Division by zero")
 		} else {
 			fmt.Println(firstArg / secondArg)
 		}
