@@ -13,7 +13,7 @@ func main() {
 	var secondArg int64
 	_, err = fmt.Scanln(&secondArg)
 	if err != nil {
-		fmt.Println("IInvalid second operand")
+		fmt.Println("Invalid second operand")
 		return
 	}
 	var operator string
