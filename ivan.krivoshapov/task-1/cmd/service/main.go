@@ -7,19 +7,19 @@ func main() {
 	var firstArg int64
 	_, err := fmt.Scanln(&firstArg)
 	if err != nil {
-		fmt.Println("error reading first argument")
+		fmt.Println("Invalid first operand")
 		return
 	}
 	var secondArg int64
 	_, err = fmt.Scanln(&secondArg)
 	if err != nil {
-		fmt.Println("error reading second argument")
+		fmt.Println("IInvalid second operand")
 		return
 	}
 	var operator string
 	_, err = fmt.Scanln(&operator)
 	if err != nil {
-		fmt.Println("error reading operator")
+		fmt.Println("Invalid operation")
 		return
 	}
 
@@ -32,11 +32,11 @@ func main() {
 		fmt.Println(firstArg * secondArg)
 	case "/":
 		if secondArg == 0 {
-			fmt.Println("can't divide by zero")
+			fmt.Println("Division by zero error")
 		} else {
 			fmt.Println(firstArg / secondArg)
 		}
 	default:
-		fmt.Println("unknown operator")
+		fmt.Println("Invalid operation")
 	}
 }
