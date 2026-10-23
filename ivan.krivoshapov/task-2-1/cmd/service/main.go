@@ -2,6 +2,11 @@ package main
 
 import "fmt"
 
+const (
+	lowestTemp  = 15
+	highestTemp = 30
+)
+
 func pickTemperature(sign string, value int, from, to int) int {
 	switch sign {
 	case ">=":
@@ -34,5 +39,26 @@ func main() {
 
 			return
 		}
+
+		from, to := lowestTemp, highestTemp
+
+		for e := 0; e < staff; e++ {
+			var sign string
+			var value int
+
+			if _, err := fmt.Scan(&sign, &value); err != nil {
+				fmt.Print("Invalid input")
+				return
+			}
+
+			if sign != ">=" && sign != "<" {
+				fmt.Print("Invalid operator")
+				return
+			}
+
+			fmt.Print(pickTemperature(sign, value, from, to))
+		}
+
 	}
+
 }
