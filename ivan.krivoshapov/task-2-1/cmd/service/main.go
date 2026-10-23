@@ -7,45 +7,48 @@ const (
 	highestTemp = 30
 )
 
-func pickTemperature(sign string, value int, from, to *int) int {
+func pickTemperature(sign string, value int, lower, upper *int) int {
 	switch sign {
 	case ">=":
-		if value > *from {
-			*from = value
+		if value > *lower {
+			*lower = value
 		}
 	case "<=":
-		if value < *to {
-			*to = value
+		if value < *upper {
+			*upper = value
 		}
 	}
 
-	if *from > *to {
+	if *lower > *upper {
 		return -1
 	}
 
-	return *from
+	return *lower
 }
 
 func main() {
 	var departments int
+
 	if _, err := fmt.Scan(&departments); err != nil {
 		fmt.Println("Invalid departments count")
 
 		return
 	}
 
-	for d := 0; d < departments; d++ {
+	for range departments {
 		var staff int
+
 		if _, err := fmt.Scan(&staff); err != nil {
 			fmt.Println("Invalid employees count")
 
 			return
 		}
 
-		from, to := lowestTemp, highestTemp
+		lower, upper := lowestTemp, highestTemp
 
-		for e := 0; e < staff; e++ {
+		for range staff {
 			var sign string
+
 			var value int
 
 			if _, err := fmt.Scan(&sign, &value); err != nil {
@@ -60,7 +63,7 @@ func main() {
 				return
 			}
 
-			fmt.Println(pickTemperature(sign, value, &from, &to))
+			fmt.Println(pickTemperature(sign, value, &lower, &upper))
 		}
 	}
 }
