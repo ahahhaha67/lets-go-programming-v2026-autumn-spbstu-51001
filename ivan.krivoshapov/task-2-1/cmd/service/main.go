@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func pickTemperature(sign string, value int, from, to int) int {
 	switch sign {
 	case ">=":
@@ -18,4 +20,19 @@ func pickTemperature(sign string, value int, from, to int) int {
 }
 
 func main() {
+	var department int
+	if _, err := fmt.Scan(&department); err != nil {
+		fmt.Print("Invalid department count")
+
+		return
+	}
+
+	for d := 0; d < department; d++ {
+		var staff int
+		if _, err := fmt.Scan(&staff); err != nil {
+			fmt.Print("Invalid staff count")
+
+			return
+		}
+	}
 }
