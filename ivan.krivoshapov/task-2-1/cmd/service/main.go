@@ -7,35 +7,37 @@ const (
 	highestTemp = 30
 )
 
-func pickTemperature(sign string, value int, from, to int) int {
+func pickTemperature(sign string, value int, from, to *int) int {
 	switch sign {
 	case ">=":
-		if value > from {
-			from = value
+		if value > *from {
+			*from = value
 		}
-	case "<":
-		if value < to {
-			to = value
+	case "<=":
+		if value < *to {
+			*to = value
 		}
 	}
-	if from > to {
+
+	if *from > *to {
 		return -1
 	}
-	return from
+
+	return *from
 }
 
 func main() {
-	var department int
-	if _, err := fmt.Scan(&department); err != nil {
-		fmt.Print("Invalid department count")
+	var departments int
+	if _, err := fmt.Scan(&departments); err != nil {
+		fmt.Println("Invalid departments count")
 
 		return
 	}
 
-	for d := 0; d < department; d++ {
+	for d := 0; d < departments; d++ {
 		var staff int
 		if _, err := fmt.Scan(&staff); err != nil {
-			fmt.Print("Invalid staff count")
+			fmt.Println("Invalid employees count")
 
 			return
 		}
@@ -47,18 +49,18 @@ func main() {
 			var value int
 
 			if _, err := fmt.Scan(&sign, &value); err != nil {
-				fmt.Print("Invalid input")
+				fmt.Println("Invalid input")
+
 				return
 			}
 
-			if sign != ">=" && sign != "<" {
-				fmt.Print("Invalid operator")
+			if sign != ">=" && sign != "<=" {
+				fmt.Println("Invalid operator")
+
 				return
 			}
 
-			fmt.Print(pickTemperature(sign, value, from, to))
+			fmt.Println(pickTemperature(sign, value, &from, &to))
 		}
-
 	}
-
 }
